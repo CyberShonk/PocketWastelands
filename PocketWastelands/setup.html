@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Setup | Shonk's Pocket Wastelands</title>
+  <meta name="description" content="Tale of Two Wastelands on Android with GameNative and Droid Mod Loader.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Shonk's Pocket Wastelands</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html" class="">Home</a>
+<a href="setup.html" class="active">Setup</a>
+<a href="mods.html" class="">Mod List</a>
+<a href="load-order.html" class="">Load Order</a>
+<a href="avoid.html" class="">Avoid</a>
+<a href="changelog.html" class="">Changelog</a>
+<a href="report.html" class="">Reports</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+
+<section class="hero">
+  <h1>Setup</h1>
+  <p class="lead">Get the game, shared storage, TTW files, DML profile, plugin-file handoff, and INIs working before adding anything extra.</p>
+</section>
+
+<h2>GameNative setup</h2>
+<p>Use a simple GameNative setup first. Do not change drivers, wrappers, resolution, and mods all at the same time.</p>
+<div class="card-grid">
+  <article class="card"><h3>Resolution</h3><p><code>1280x720</code> for the first pass.</p></article>
+  <article class="card"><h3>Executable</h3><p>Use <code>FalloutNV.exe</code> after the 4GB patcher is applied. Use <code>nvse_loader.exe</code> only if your patcher setup does not auto-load xNVSE.</p></article>
+  <article class="card"><h3>Wine / Proton</h3><p>Use Proton 10 ARM64EC as the normal target. Test newer builds only when you are comparing Proton versions.</p></article>
+  <article class="card"><h3>Renderer</h3><p>DXVK with a current stable Turnip driver for your device.</p></article>
+  <article class="card"><h3>Present mode</h3><p>Mailbox.</p></article>
+  <article class="card"><h3>Frame target</h3><p>Start with 60 FPS. TTW may need lower settings on weaker devices.</p></article>
+</div>
+
+<h2>Install Fallout: New Vegas in shared storage</h2>
+<div class="callout warning">
+  <h3>This is required for the DML route</h3>
+  <p>Fallout: New Vegas should be somewhere Android file managers and DML can reach, such as:</p>
+  <pre>/storage/emulated/0/PcGames/Fallout New Vegas/</pre>
+  <p>Set the DML deployment target to:</p>
+  <pre>/storage/emulated/0/PcGames/Fallout New Vegas/Data/</pre>
+  <p>Do not select the game root as the Data target. The Data target should contain <code>FalloutNV.esm</code>.</p>
+</div>
+
+<h2>Prepare Fallout 3 and Fallout: New Vegas on PC</h2>
+<ol>
+  <li>Install English Fallout 3 and Fallout: New Vegas with all DLC.</li>
+  <li>Install both games outside Windows-protected folders such as <code>Program Files</code>, the Desktop, or Documents.</li>
+  <li>Launch both games once on PC so their INIs are created.</li>
+  <li>Install current Visual C++ Redistributables on the PC. GameNative may also need them for tools and DLL mods.</li>
+</ol>
+
+<h2>Generate Tale of Two Wastelands on PC</h2>
+<div class="callout notice">
+  <h3>Do not generate TTW on Android</h3>
+  <p>The TTW installer is a Windows-side job. The audio encoding step is CPU-heavy and can take a long time even on a normal desktop CPU.</p>
+</div>
+<ol>
+  <li>Download the <a href="https://mod.pub/ttw/133-tale-of-two-wastelands">Tale of Two Wastelands installer</a>.</li>
+  <li>Create a simple output folder, such as <code>Desktop/ttw</code>.</li>
+  <li>Run the TTW installer as administrator.</li>
+  <li>Point it at your Fallout 3 install, your Fallout: New Vegas install, and your chosen output folder.</li>
+  <li>Wait for the install to finish. The finished TTW folder should be large. Around 17 GB is the normal size target.</li>
+  <li>Download and install the current <a href="https://mod.pub/ttw/133/files">YUPTTW</a> update as a separate mod archive for DML.</li>
+</ol>
+
+<h2>Zip and transfer TTW to Android</h2>
+<ol>
+  <li>Right-click the finished <code>ttw</code> folder.</li>
+  <li>Compress it into a normal zip archive.</li>
+  <li>Name it clearly, such as <code>TTW.zip</code>.</li>
+  <li>Copy <code>TTW.zip</code> to Android shared storage, such as <code>Downloads/</code>.</li>
+</ol>
+
+<h2>Droid Mod Loader setup</h2>
+<ol>
+  <li>Open Droid Mod Loader.</li>
+  <li>Create or select a Fallout: New Vegas profile.</li>
+  <li>Name it <code>Pocket Wastelands</code> or <code>TTW</code>.</li>
+  <li>Set the deployment target to the New Vegas <code>Data</code> folder in shared storage.</li>
+  <li>Import <code>TTW.zip</code>.</li>
+  <li>Import YUPTTW and the essential mods from the Mod List page.</li>
+  <li>Deploy mods.</li>
+  <li>Run plugin discovery.</li>
+  <li>Enable the TTW plugins and any guide plugins that have ESP or ESM files.</li>
+  <li>Write plugin files.</li>
+</ol>
+
+<h2>Copy plugin files into GameNative</h2>
+<p>DML writes <code>plugins.txt</code> and <code>loadorder.txt</code> for the profile. New Vegas running in GameNative still needs those files inside the Wine/Proton user profile path.</p>
+<ol>
+  <li>Use an Android file manager and open DML's profile folder:</li>
+</ol>
+<pre>Android/data/com.shonkware.droidmodloader/files/state/profiles/</pre>
+<ol start="2">
+  <li>Open your Fallout: New Vegas or TTW profile folder.</li>
+  <li>Copy <code>plugins.txt</code> and <code>loadorder.txt</code>.</li>
+  <li>Create this folder in your New Vegas game folder:</li>
+</ol>
+<pre>DML_Output/</pre>
+<ol start="5">
+  <li>Paste the files into <code>DML_Output</code>.</li>
+  <li>Open GameNative and browse to the same New Vegas game folder.</li>
+  <li>Open <code>DML_Output</code>.</li>
+  <li>Copy <code>plugins.txt</code> and <code>loadorder.txt</code>.</li>
+  <li>Paste them into:</li>
+</ol>
+<pre>C:/users/xuser/AppData/Local/FalloutNV/</pre>
+<p>Overwrite existing files when needed.</p>
+
+<h2>BethINI Pie setup</h2>
+<ol>
+  <li>Download <a href="https://www.nexusmods.com/site/mods/631">BethINI Pie</a>.</li>
+  <li>Extract it somewhere the GameNative container can reach, such as Android Downloads.</li>
+  <li>Launch BethINI Pie inside GameNative.</li>
+  <li>Select Fallout: New Vegas.</li>
+  <li>Start with Medium on stronger handhelds or Low on weaker handhelds.</li>
+  <li>Enable audio multithreading.</li>
+  <li>Set the starting quest to <strong>Tale of Two Wastelands</strong>.</li>
+  <li>Save the INIs.</li>
+</ol>
+<div class="callout notice">
+  <h3>Manual TTW starting quest check</h3>
+  <p>If BethINI Pie does not set the TTW start correctly, check <code>FalloutCustom.ini</code> or your active New Vegas INI path for:</p>
+  <pre>SCharGenQuest=001FFFF8</pre>
+</div>
+
+<h2>Tracking performance</h2>
+<ol>
+  <li>Use the GameNative overlay first.</li>
+  <li>Record device, driver, Proton version, DXVK version, location, weather, time of day, FPS, stutter, and crash behavior.</li>
+  <li>Use the same short route for comparisons. Vault 101 exit, Megaton exterior, Goodsprings to the saloon, Freeside gate, and a short Strip walk are useful checks.</li>
+  <li>Use DXVK HUD only for test runs, then turn it off for normal play.</li>
+</ol>
+<pre>DXVK_HUD=fps,frametimes,drawcalls,pipelines,memory</pre>
+
+<nav class="page-nav" aria-label="Page navigation">
+  <a class="page-nav-link prev" href="index.html"><span>&larr; Previous</span><strong>Home</strong></a>
+  <a class="page-nav-link next" href="mods.html"><span>Next &rarr;</span><strong>Mod List</strong></a>
+</nav>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      Built for Android handheld Tale of Two Wastelands, <a href="https://github.com/utkarshdalal/GameNative">GameNative</a>, and <a href="https://github.com/CyberShonk/DroidModLoader">Droid Mod Loader</a>.
+      <br>This guide is unofficial and does not redistribute any game files or mods. Read each mod page before installing.
+    </div>
+  </footer>
+</body>
+</html>
