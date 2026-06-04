@@ -351,3 +351,30 @@ pre {
     text-align: left;
   }
 }
+
+/* v8 layout hardening for homepage guide switcher and before-you-start cards */
+.hero + .guide-switcher {
+  margin-top: 0;
+}
+.guide-switcher {
+  margin-bottom: 30px;
+}
+.guide-switcher + .card-grid {
+  margin-top: 18px;
+}
+.callout {
+  display: block;
+  margin: 0 0 26px;
+}
+.callout + .card-grid {
+  margin-top: 22px;
+}
+@media (max-width: 720px) {
+  .guide-switcher {
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .callout {
+    margin-bottom: 24px;
+  }
+}
