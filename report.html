@@ -5,99 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reports | Shonk's Pocket Wastelands</title>
   <meta name="description" content="Tale of Two Wastelands on Android with GameNative and Droid Mod Loader.">
-  <link rel="stylesheet" href="assets/site.css?v=8">
+  <link rel="stylesheet" href="assets/site.css?v=9">
+  
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">Shonk's Pocket Wastelands</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="index.html" class="">Home</a>
+<a href="index.html" class="">Home</a>
 <a href="setup.html" class="">Setup</a>
 <a href="mods.html" class="">Mod List</a>
 <a href="load-order.html" class="">Load Order</a>
 <a href="avoid.html" class="">Avoid</a>
 <a href="changelog.html" class="">Changelog</a>
 <a href="report.html" class="active">Reports</a>
+<a href="compatibility.html" class="">Compatibility</a>
+<a href="glossary.html" class="">Glossary</a>
       </nav>
     </div>
   </header>
   <main class="container">
 
-<section class="hero">
-  <h1>Reports</h1>
-  <p class="lead">Use this format when reporting crashes, bad performance, missing files, broken plugin output, or guide problems.</p>
+<section class="hero"><h1>Reports</h1><p class="lead">Reports should include enough detail for someone else to reproduce the problem instead of guessing at random settings.</p></section>
+<section><h2>Submit a report</h2>
+<p>Use the <a href="compatibility.html">Device Compatibility Submissions</a> page for tested device results. A useful report needs device, driver, GameNative, DML, Proton/Wine, FEXCore, DXVK, Turnip, storage, and test-result details. Vague "it works" reports are not enough to list a device as compatible.</p>
+<p>If you are reporting a repeatable problem, open an issue and include your device, GameNative version, DML version, profile JSON, screenshots, logs, and the exact step where it failed.</p>
+<p><a class="button" href="https://github.com/CyberShonk/PocketWastelands/issues/new/choose">Open a Pocket Wastelands GitHub issue</a></p>
+<div class="callout notice learning-card"><h3>Before opening an issue</h3><ul>
+  <li>Confirm vanilla GameNative worked before reporting a modded crash.</li>
+  <li>Write down exact versions for GameNative, Proton/Wine, FEXCore, DXVK, Turnip/driver, DML, and the guide date.</li>
+  <li>Separate the failure point: GameNative launch, game install, DML deployment, plugin order, INI settings, or a specific mod.</li>
+  <li>Attach crash logs only when available. Screenshots of settings are still useful.</li>
+  <li>For TTW, report whether the TTW archive imported, whether plugin files were written, and whether <code>plugins.txt</code> and <code>loadorder.txt</code> were copied into GameNative AppData.</li>
+</ul></div>
 </section>
-
-<h2>Quick report format</h2>
-<pre>Guide: Shonk's Pocket Wastelands
-Guide version/date:
-DML version:
-GameNative version:
-Device:
+<section><h2>Copyable report template</h2>
+<pre>Device:
+Chipset / SoC:
+RAM:
 Android version:
-Chipset:
-Driver / Turnip version:
-Proton / Wine version:
-DXVK version:
-Resolution:
-Frame target:
-Game install path:
-DML target path:
-TTW archive imported successfully: yes/no
-YUPTTW installed: yes/no
-Essential utilities installed: yes/no
-Deploy completed: yes/no
-Write Plugin Files completed: yes/no
+Guide tested:
+Fallout 3 source: Steam / GOG / Epic / other
+Fallout: New Vegas source: Steam / GOG / Epic / other
+TTW generated on PC: yes/no
+TTW archive imported into DML: yes/no
 plugins.txt copied to GameNative AppData: yes/no
 loadorder.txt copied to GameNative AppData: yes/no
-Starting quest set to TTW in BethINI Pie: yes/no
-What happened:
-What you expected:
+Game source: Steam / GOG / Epic / other
+GameNative APK/build type: legacy / modern / unknown
+GameNative version:
+Profile JSON used:
+Container:
+Proton/Wine:
+FEXCore:
+DXVK:
+Turnip/driver:
+Vulkan version:
+Resolution:
+Present mode:
+FPS cap:
+Audio mode / latency:
+CPU list:
+WoW64 CPU list:
+Environment variables:
+GOG/GameNative registry notice applied: yes/no/not GOG
+Launcher inside GameNative has greyed-out options, missing Play button, or install prompt: yes/no
+DML version:
+Storage route: shared storage / app storage
+Deployment target:
+Load order used:
+Crash log available: yes/no
 Exact step where it failed:
-Crash log attached: yes/no
-Screenshots/video attached: yes/no
-Notes:</pre>
-
-<h2>Performance report format</h2>
-<pre>Location:
-Save type: new game / existing save
-Weather:
-Time of day:
-Camera view: first person / third person
-Average FPS:
-Lowest FPS:
-Stutter: none / minor / heavy
-DXVK HUD used: yes/no
-Mods changed since last test:
-GameNative settings changed since last test:
-Notes:</pre>
-
-<h2>Plugin report format</h2>
-<pre>Expected plugin order:
-Actual plugin order:
-DML discovery found TTW plugins: yes/no
-TaleOfTwoWastelands.esm enabled: yes/no
-YUPTTW.esm enabled: yes/no
-plugins.txt has * before enabled plugins: yes/no
-Files copied to C:/users/xuser/AppData/Local/FalloutNV/: yes/no
-Game launches TTW start: yes/no
-Game launches vanilla New Vegas instead: yes/no</pre>
-
-<h2>Good screenshots to include</h2>
-<ul>
-  <li>DML profile status and deployment target.</li>
-  <li>DML mod list showing TTW and YUPTTW enabled.</li>
-  <li>DML plugin list showing TTW plugins enabled.</li>
-  <li>The GameNative FalloutNV AppData folder showing <code>plugins.txt</code> and <code>loadorder.txt</code>.</li>
-  <li>BethINI Pie showing the TTW starting quest.</li>
-</ul>
-
+What changed since the last working test:</pre>
+</section>
 <nav class="page-nav" aria-label="Page navigation">
   <a class="page-nav-link prev" href="changelog.html"><span>&larr; Previous</span><strong>Changelog</strong></a>
-  <div class="page-nav-spacer" aria-hidden="true"></div>
+  <a class="page-nav-link next" href="compatibility.html"><span>Next &rarr;</span><strong>Compatibility</strong></a>
 </nav>
-
   </main>
   <footer class="site-footer">
     <div class="container">
@@ -105,5 +90,6 @@ Game launches vanilla New Vegas instead: yes/no</pre>
       <br>This guide is unofficial and does not redistribute any game files or mods. Read each mod page before installing.
     </div>
   </footer>
+
 </body>
 </html>

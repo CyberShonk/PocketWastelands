@@ -5,99 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mod List | Shonk's Pocket Wastelands</title>
   <meta name="description" content="Tale of Two Wastelands on Android with GameNative and Droid Mod Loader.">
-  <link rel="stylesheet" href="assets/site.css?v=8">
+  <link rel="stylesheet" href="assets/site.css?v=9">
+  
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">Shonk's Pocket Wastelands</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="index.html" class="">Home</a>
+<a href="index.html" class="">Home</a>
 <a href="setup.html" class="">Setup</a>
 <a href="mods.html" class="active">Mod List</a>
 <a href="load-order.html" class="">Load Order</a>
 <a href="avoid.html" class="">Avoid</a>
 <a href="changelog.html" class="">Changelog</a>
 <a href="report.html" class="">Reports</a>
+<a href="compatibility.html" class="">Compatibility</a>
+<a href="glossary.html" class="">Glossary</a>
       </nav>
     </div>
   </header>
   <main class="container">
+<section class="hero"><h1>Mod List</h1><p class="lead">Install the sections in order. The layout matches the companion guide, but the actual mod choices stay specific to Pocket Wastelands.</p></section>
 
-<section class="hero">
-  <h1>Mod List</h1>
-  <p class="lead">Install the sections in order. Use the listed file unless the notes say otherwise. Extra file choices are written as normal notes for the mod they belong to.</p>
-</section>
-
-<div class="callout warning">
-  <h3>Root tools are not normal DML Data mods</h3>
-  <p>Root tools belong beside <code>FalloutNV.exe</code>. DML should deploy to <code>Data</code>. Keep those two locations separate.</p>
-</div>
-
-<h2>Root tools</h2>
-<p>These files belong in the game root next to <code>FalloutNV.exe</code>.</p>
-<div class="mod-list">
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/67883">New Vegas Script Extender (xNVSE)</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>New Vegas Script Extender (xNVSE)</div><div><strong>Install location</strong>Game root</div></div><p>Copy the xNVSE files next to <code>FalloutNV.exe</code>. With the 4GB patcher, the game executable should auto-load xNVSE. Use <code>nvse_loader.exe</code> only if your setup requires it.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/62552">FNV 4GB Patcher</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>4GB Patcher</div><div><strong>Use for</strong>Steam and GOG</div></div><p>Run once against <code>FalloutNV.exe</code>. Keep the patched executable in the game root.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/81281">Epic Games Patcher</a></h3><span class="badge optional">Only for Epic</span></header><div class="meta"><div><strong>Main file</strong>Epic Games Patcher</div><div><strong>Use for</strong>Epic Games Store installs</div></div><p>Use this instead of the normal 4GB patcher if your New Vegas copy is the Epic Games version.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/">Visual C++ Redistributables AIO</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>VC++ AIO</div><div><strong>Install location</strong>PC and GameNative container if needed</div></div><p>Many engine plugins and tools expect current VC++ runtimes. Install on PC before generating TTW. Also install in the GameNative container if DLL mods or tools crash immediately.</p></article>
-</div>
-
-<h2>TTW core</h2>
-<div class="mod-list">
-  <article class="mod-card"><header><h3><a href="https://mod.pub/ttw/133-tale-of-two-wastelands">Tale of Two Wastelands</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>TTW installer output zipped as <code>TTW.zip</code></div><div><strong>Install with</strong>DML archive import</div></div><p>Generate on PC, zip the finished output folder, move it to Android, then import the archive into DML.</p></article>
-  <article class="mod-card"><header><h3><a href="https://mod.pub/ttw/133/files">YUPTTW</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>YUPTTW current file</div><div><strong>Install with</strong>DML archive import</div></div><p>Install as a separate mod after TTW. Keep it above extra content and patches that depend on TTW.</p></article>
-</div>
-
-<h2>Essential utilities</h2>
-<p>These are the core TTW/New Vegas utilities from The Best of Times, adapted for DML.</p>
-<div class="mod-list">
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/77415">TTW NVSE Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>TTWNVSE</div><div><strong>Type</strong>NVSE plugin</div></div><p>Hard requirement for TTW. Install through DML unless you are manually placing root-level files for testing.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/58277">JIP LN NVSE Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>JIP LN NVSE Plugin</div><div><strong>Notes</strong>Install the JIP LN Settings INI too.</div></div><p>Core dependency and engine fix plugin used by modern New Vegas and TTW mods.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/66927">JohnnyGuitar NVSE</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>JohnnyGuitar NVSE</div><div><strong>Notes</strong>Use <a href="https://www.nexusmods.com/newvegas/mods/86200">JohnnyGuitar NVSE - INI Presets</a>.</div></div><p>Core dependency for many fixes and gameplay mods. The All Tweaks preset is the normal TBoT-style starting point.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/72541">ShowOff xNVSE Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>ShowOff NVSE</div><div><strong>Notes</strong>Install the ShowOff INI from the file page.</div></div><p>Adds new functions, tweaks, and engine-level fixes.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/66537">NVTF - New Vegas Tick Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>NVTF</div><div><strong>Notes</strong>Install the NVTF INI too.</div></div><p>Fixes micro-stutter and timing behavior. Keep a 60 FPS target first on Android.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/66347">lStewieAl's Tweaks and Engine Fixes</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>Stewie Tweaks</div><div><strong>Notes</strong>Use the <a href="https://github.com/ModdingLinked/Stewie-Tweaks-INIs/releases/latest">ModdingLinked INI</a> as a starting point.</div></div><p>Configurable quality-of-life improvements and fixes. Do not enable random tweak packs on top without testing.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/80993">lStewieAl's Engine Optimizations</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>Engine Optimizations</div><div><strong>Type</strong>NVSE plugin</div></div><p>Improves slow engine functions, especially loading and saving behavior.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/71973">Combat Lag Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>Fast Weapon Lag Fix</div><div><strong>Type</strong>NVSE plugin</div></div><p>Helps combat-related frame drops caused by engine behavior.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/84823">VATS Lag Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>VATS Lag Fix</div><div><strong>Type</strong>NVSE plugin</div></div><p>Fixes delay before VATS hit percentages appear in some cases.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/80666">ActorCause Save Bloat Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>ActorCause Save Bloat Fix</div><div><strong>Type</strong>NVSE plugin</div></div><p>Helps long-playthrough save and load behavior.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/71336">kNVSE Animation Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>kNVSE</div><div><strong>Type</strong>Animation framework</div></div><p>Resource for modern animation mods. Keep it even if this first guide does not add many animation mods yet.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/57174">UIO - User Interface Organizer</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>UIO - User Interface Organizer</div><div><strong>Type</strong>UI utility</div></div><p>Keeps HUD and UI extensions working together and fixes UI behavior.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/68714">FNV Mod Limit Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>MLF</div><div><strong>Type</strong>Engine fix</div></div><p>Raises file-handle limits and helps loading behavior even before the list becomes large.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/82540">Yvile's Crash Logger</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>Crash Logger</div><div><strong>Use</strong>Reports and debugging</div></div><p>Install before broader testing so crash reports are more useful.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/70801">Improved Console</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>Improved Console</div><div><strong>Use</strong>Debugging</div></div><p>Useful when checking forms, plugins, and scripted behavior.</p></article>
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/65906">Console Paste Support</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>Console Paste</div><div><strong>Use</strong>Debugging</div></div><p>Useful if you paste console commands during testing.</p></article>
-</div>
-
-
-<h2>INI and performance tools</h2>
-<div class="mod-list">
-  <article class="mod-card"><header><h3><a href="https://www.nexusmods.com/site/mods/631">BethINI Pie</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>BethINI Pie</div><div><strong>Use</strong>Android-friendly INI setup</div></div><p>Use this guide's setup page to pick conservative settings and set the TTW starting quest.</p></article>
-  <article class="mod-card"><header><h3><a href="https://performance.moddinglinked.com/falloutnv.html">Fallout New Vegas Performance Guide</a></h3><span class="badge recommended">Reference</span></header><div class="meta"><div><strong>Use</strong>Performance reference</div><div><strong>Notes</strong>Apply carefully on Android</div></div><p>Useful background for DXVK, frame limiting, fullscreen behavior, HDR, and performance problems.</p></article>
-</div>
-
-<h2>Installer rule</h2>
-<div class="callout notice">
-  <p>If DML does not show the right installer choices yet, install the mod on PC with MO2, pick the options you need, zip the clean installed output, then install that zip in DML.</p>
-</div>
-
-<h2>Check essentials</h2>
-<ol>
-  <li>Deploy in DML.</li>
-  <li>Run plugin discovery.</li>
-  <li>Enable <code>TaleOfTwoWastelands.esm</code> and <code>YUPTTW.esm</code>.</li>
-  <li>Write plugin files.</li>
-  <li>Copy <code>plugins.txt</code> and <code>loadorder.txt</code> into <code>C:/users/xuser/AppData/Local/FalloutNV/</code>.</li>
-  <li>Launch the game.</li>
-  <li>Start a new game and verify the TTW start happens.</li>
-</ol>
-
+<section class="mod-section"><h2>Before downloading mods</h2><p>Install sections in order. Use the listed file unless the note says otherwise. When a mod has optional files or special download choices, the note is listed directly under that mod.</p><div class="callout notice"><h3>Root tools warning</h3><p>Some tools belong in the game root next to <code>FalloutNV.exe</code>, not inside <code>Data</code>. This applies to both guides because xNVSE, the 4GB patcher, and some helper tools are root-level tools.</p></div></section><section class="mod-section"><h2>Required PC-side preparation</h2><p>TTW must be generated on PC first. This section points back to setup instead of repeating the full TTW generation guide.</p><div class="mod-list"><article class="mod-card"><header><h3><a href="https://mod.pub/ttw/133-tale-of-two-wastelands">Tale of Two Wastelands</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>TTW installer output zipped as <code>TTW.zip</code></div><div><strong>Install with</strong>DML archive import</div></div><p>Generate on PC, zip the finished output folder, move it to Android, then import the archive into DML.</p></article>
+<article class="mod-card"><header><h3><a href="https://mod.pub/ttw/133/files">YUPTTW</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>YUPTTW current file</div><div><strong>Install with</strong>DML archive import</div></div><p>Install as a separate mod after TTW. Keep it above extra content and patches that depend on TTW.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/">Visual C++ Redistributables AIO</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>VC++ AIO</div><div><strong>Install location</strong>PC and GameNative container if needed</div></div><p>Many engine plugins and tools expect current VC++ runtimes. Install on PC before generating TTW. Also install in the GameNative container if DLL mods or tools crash immediately.</p></article></div></section><section class="mod-section"><h2>Required utilities</h2><p>Root-level tools and core dependencies that should be installed before the rest of the list.</p><div class="mod-list"><article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/67883">New Vegas Script Extender (xNVSE)</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>New Vegas Script Extender (xNVSE)</div><div><strong>Install location</strong>Game root</div></div><p>Copy the xNVSE files next to <code>FalloutNV.exe</code>. With the 4GB patcher, the game executable should auto-load xNVSE. Use <code>nvse_loader.exe</code> only if your setup requires it.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/62552">FNV 4GB Patcher</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>4GB Patcher</div><div><strong>Use for</strong>Steam and GOG</div></div><p>Run once against <code>FalloutNV.exe</code>. Keep the patched executable in the game root.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/81281">Epic Games Patcher</a></h3><span class="badge optional">Only for Epic</span></header><div class="meta"><div><strong>Main file</strong>Epic Games Patcher</div><div><strong>Use for</strong>Epic Games Store installs</div></div><p>Use this instead of the normal 4GB patcher if your New Vegas copy is the Epic Games version.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/77415">TTW NVSE Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>TTWNVSE</div><div><strong>Type</strong>NVSE plugin</div></div><p>Hard requirement for TTW. Install through DML unless you are manually placing root-level files for testing.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/58277">JIP LN NVSE Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>JIP LN NVSE Plugin</div><div><strong>Notes</strong>Install the JIP LN Settings INI too.</div></div><p>Core dependency and engine fix plugin used by modern New Vegas and TTW mods.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/66927">JohnnyGuitar NVSE</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>JohnnyGuitar NVSE</div><div><strong>Notes</strong>Use <a href="https://www.nexusmods.com/newvegas/mods/86200">JohnnyGuitar NVSE - INI Presets</a>.</div></div><p>Core dependency for many fixes and gameplay mods. The All Tweaks preset is the normal TBoT-style starting point.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/72541">ShowOff xNVSE Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>ShowOff NVSE</div><div><strong>Notes</strong>Install the ShowOff INI from the file page.</div></div><p>Adds new functions, tweaks, and engine-level fixes.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/66537">NVTF - New Vegas Tick Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>NVTF</div><div><strong>Notes</strong>Install the NVTF INI too.</div></div><p>Fixes micro-stutter and timing behavior. Keep a 60 FPS target first on Android.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/68714">FNV Mod Limit Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>MLF</div><div><strong>Type</strong>Engine fix</div></div><p>Raises file-handle limits and helps loading behavior even before the list becomes large.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/82540">Yvile's Crash Logger</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>Crash Logger</div><div><strong>Use</strong>Reports and debugging</div></div><p>Install before broader testing so crash reports are more useful.</p></article></div></section><section class="mod-section"><h2>Core stability / bug fixes</h2><p>TTW stability and engine-fix plugins adapted from the TTW/New Vegas baseline.</p><div class="mod-list"><article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/66347">lStewieAl's Tweaks and Engine Fixes</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>Stewie Tweaks</div><div><strong>Notes</strong>Use the <a href="https://github.com/ModdingLinked/Stewie-Tweaks-INIs/releases/latest">ModdingLinked INI</a> as a starting point.</div></div><p>Configurable quality-of-life improvements and fixes. Do not enable random tweak packs on top without testing.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/80993">lStewieAl's Engine Optimizations</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>Engine Optimizations</div><div><strong>Type</strong>NVSE plugin</div></div><p>Improves slow engine functions, especially loading and saving behavior.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/71973">Combat Lag Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>Fast Weapon Lag Fix</div><div><strong>Type</strong>NVSE plugin</div></div><p>Helps combat-related frame drops caused by engine behavior.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/84823">VATS Lag Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>VATS Lag Fix</div><div><strong>Type</strong>NVSE plugin</div></div><p>Fixes delay before VATS hit percentages appear in some cases.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/80666">ActorCause Save Bloat Fix</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>ActorCause Save Bloat Fix</div><div><strong>Type</strong>NVSE plugin</div></div><p>Helps long-playthrough save and load behavior.</p></article></div></section><section class="mod-section"><h2>UI / quality of life</h2><p>UI and testing utilities that are useful while keeping the initial TTW setup focused.</p><div class="mod-list"><article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/71336">kNVSE Animation Plugin</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>kNVSE</div><div><strong>Type</strong>Animation framework</div></div><p>Resource for modern animation mods. Keep it even if this first guide does not add many animation mods yet.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/57174">UIO - User Interface Organizer</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>UIO - User Interface Organizer</div><div><strong>Type</strong>UI utility</div></div><p>Keeps HUD and UI extensions working together and fixes UI behavior.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/70801">Improved Console</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>Improved Console</div><div><strong>Use</strong>Debugging</div></div><p>Useful when checking forms, plugins, and scripted behavior.</p></article>
+<article class="mod-card"><header><h3><a href="https://www.nexusmods.com/newvegas/mods/65906">Console Paste Support</a></h3><span class="badge recommended">Recommended</span></header><div class="meta"><div><strong>Main file</strong>Console Paste</div><div><strong>Use</strong>Debugging</div></div><p>Useful if you paste console commands during testing.</p></article></div></section><section class="mod-section"><h2>Performance / Android-safe choices</h2><p>Keep the first TTW Android pass conservative. TTW is heavier than plain New Vegas.</p><div class="mod-list"><article class="mod-card"><header><h3><a href="https://www.nexusmods.com/site/mods/631">BethINI Pie</a></h3><span class="badge">Required</span></header><div class="meta"><div><strong>Main file</strong>BethINI Pie</div><div><strong>Use</strong>Android-friendly INI setup</div></div><p>Use this guide's setup page to pick conservative settings and set the TTW starting quest.</p></article>
+<article class="mod-card"><header><h3><a href="https://performance.moddinglinked.com/falloutnv.html">Fallout New Vegas Performance Guide</a></h3><span class="badge recommended">Reference</span></header><div class="meta"><div><strong>Use</strong>Performance reference</div><div><strong>Notes</strong>Apply carefully on Android</div></div><p>Useful background for DXVK, frame limiting, fullscreen behavior, HDR, and performance problems.</p></article></div></section><section class="mod-section"><h2>Optional additions</h2><p>Keep optional additions out until the TTW baseline works. TTW is heavier than plain New Vegas, so add extras one at a time only after the start area is stable.</p></section><section class="mod-section"><h2>Notes for optional files or special downloads</h2><p>When a mod has optional files or special download choices, the note is listed directly under that mod. Do not install every optional file just because it exists.</p></section><section class="mod-section"><h2>What not to change here</h2><p>Do not remove TTW generation, YUPTTW, or the plugin-file handoff steps. Do not assume a Pocket Mojave result proves TTW compatibility.</p></section><section class="mod-section"><h2>Next step</h2><p>After this page is installed and tested, continue to the Load Order page and verify that DML wrote the correct TTW plugin files.</p><div class="callout notice"><h3>Checkpoint</h3><ol><li>Deploy in DML.</li><li>Review the plugins DML detected.</li><li>Write plugin files.</li><li>Copy <code>plugins.txt</code> and <code>loadorder.txt</code> into GameNative AppData.</li><li>Start a new game and verify the TTW start happens.</li></ol></div></section>
 <nav class="page-nav" aria-label="Page navigation">
   <a class="page-nav-link prev" href="setup.html"><span>&larr; Previous</span><strong>Setup</strong></a>
   <a class="page-nav-link next" href="load-order.html"><span>Next &rarr;</span><strong>Load Order</strong></a>
 </nav>
-
   </main>
   <footer class="site-footer">
     <div class="container">
@@ -105,5 +59,6 @@
       <br>This guide is unofficial and does not redistribute any game files or mods. Read each mod page before installing.
     </div>
   </footer>
+
 </body>
 </html>

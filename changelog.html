@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Changelog | Shonk's Pocket Wastelands</title>
   <meta name="description" content="Tale of Two Wastelands on Android with GameNative and Droid Mod Loader.">
-  <link rel="stylesheet" href="assets/site.css?v=8">
+  <link rel="stylesheet" href="assets/site.css?v=9">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">Shonk's Pocket Wastelands</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="index.html" class="">Home</a>
+<a href="index.html" class="">Home</a>
 <a href="setup.html" class="">Setup</a>
 <a href="mods.html" class="">Mod List</a>
 <a href="load-order.html" class="">Load Order</a>
 <a href="avoid.html" class="">Avoid</a>
 <a href="changelog.html" class="active">Changelog</a>
 <a href="report.html" class="">Reports</a>
+<a href="compatibility.html" class="">Compatibility</a>
+<a href="glossary.html" class="">Glossary</a>
       </nav>
     </div>
   </header>
@@ -26,49 +28,47 @@
 
 <section class="hero">
   <h1>Changelog</h1>
-  <p class="lead">Mod-list changes only. This page is for added mods, removed mods, load-order-impacting changes, and save-safety notes.</p>
+  <p class="lead">Dated guide changes, compatibility notes, mod-list changes, removals, and save-safety notes.</p>
 </section>
-
-<div class="callout notice">
-  <p>Small website fixes, typo fixes, layout changes, and setup-command changes are intentionally not tracked here.</p>
-</div>
-
-<h2>How to read this page</h2>
-<p><strong>Save safe</strong> means the update should be okay for an existing save if you follow the notes. <strong>New game recommended</strong> means the update changes enough of the list that a fresh save is the cleanest test. <strong>New game required</strong> means do not add the update mid-playthrough unless you know exactly what you are doing.</p>
-
-<h2>Current guide version</h2>
-<article class="card">
-  <h3>2026-06-03 — Initial Pocket Wastelands list</h3>
-  <p><strong>New game required</strong></p>
-  <p>This is the first public Pocket Wastelands draft. Treat it as a fresh TTW setup target, not a drop-in upgrade for an existing modded save.</p>
-  <div class="meta">
-    <div><strong>Added</strong>TTW core generation, YUPTTW, root tools, essential NVSE utilities, DML import/deploy steps, plugin-file handoff, and BethINI Pie setup.</div>
-    <div><strong>Removed</strong>None. This is the initial list.</div>
-    <div><strong>Save safety</strong>Start from a clean new game after the vanilla check. Do not use this first version as a mid-save conversion path.</div>
-  </div>
-</article>
-
-<h2>Changelog format for future updates</h2>
-<pre>### YYYY-MM-DD — Short update title
-Save safe / New game recommended / New game required
-
-Added:
-- Mod name and reason.
-
-Removed:
-- Mod name and reason.
-
-Changed:
-- Recommendation or load-order-impacting change.
-
-Save safety:
-- What users should do if they already started a save.</pre>
+<section class="guide-switcher" aria-label="Guide picker">
+  <span class="guide-switcher-label">Guide picker</span>
+  <a class="guide-chip" href="/PocketMojave/">
+    <strong>Shonk's Pocket Mojave</strong>
+    <span>New Vegas on Android</span>
+  </a>
+  <a class="guide-chip current" href="/PocketWastelands/">
+    <strong>Shonk's Pocket Wastelands</strong>
+    <span>TTW on Android</span>
+  </a>
+</section>
+<p>Open a date to see what changed. Small typo fixes may be grouped with the nearest guide update.</p>
+<details class="card" open>
+  <summary>2026-06-11</summary>
+  <ul>
+    <li>Normalized the Pocket Wastelands page structure to match the companion guide: setup, compatibility, glossary, changelog, reports, load order, credits, and mod-list layout now use the same patterns.</li>
+    <li>Updated the Snapdragon 8 Gen 2 profile to GameNative 1.0.0 latest release, marked it verified working, and set the last-tested date to 2026-06-11.</li>
+    <li>Linked compatibility entries to JSON profile files instead of filling the compatibility table with GameNative variables.</li>
+    <li>Added the memory/video-memory warning: use 2 GB memory and 2 GB video memory unless the Android device has 16 GB of RAM.</li>
+    <li>Clarified the GameNative build warning: use the current GameNative 1.0.0 standard APK/release path shown in this guide, and avoid the older v1.0.0 prerelease modern Android 11+ APK that removed custom game and D: drive support.</li>
+    <li>Added Medusa to credits for helping identify the GameNative modern prerelease custom game and D: drive support issue.</li>
+    <li>Changed the changelog into dated dropdown boxes.</li>
+    <li>Updated the plugin order vs mod priority warning to the same red warning in both guides.</li>
+    <li>Removed references to a nonexistent DML plugin-discovery action and replaced them with plugin list/load order review wording.</li>
+    <li>Removed internal/template wording from the Pocket Wastelands mod list while keeping TTW generation and plugin-file handoff requirements.</li><li>Kept TTW-specific setup guidance in the shared layout slots.</li>
+  </ul>
+</details>
+<details class="card">
+  <summary>2026-06-03</summary>
+  <ul>
+    <li>Initial Pocket Wastelands list for TTW on Android.</li>
+    <li>Save safety: new game required for the initial guide target.</li>
+  </ul>
+</details>
 
 <nav class="page-nav" aria-label="Page navigation">
   <a class="page-nav-link prev" href="avoid.html"><span>&larr; Previous</span><strong>Avoid</strong></a>
   <a class="page-nav-link next" href="report.html"><span>Next &rarr;</span><strong>Reports</strong></a>
 </nav>
-
   </main>
   <footer class="site-footer">
     <div class="container">

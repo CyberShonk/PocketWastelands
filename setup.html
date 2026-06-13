@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Setup | Shonk's Pocket Wastelands</title>
   <meta name="description" content="Tale of Two Wastelands on Android with GameNative and Droid Mod Loader.">
-  <link rel="stylesheet" href="assets/site.css?v=8">
+  <link rel="stylesheet" href="assets/site.css?v=9">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">Shonk's Pocket Wastelands</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="index.html" class="">Home</a>
+<a href="index.html" class="">Home</a>
 <a href="setup.html" class="active">Setup</a>
 <a href="mods.html" class="">Mod List</a>
 <a href="load-order.html" class="">Load Order</a>
 <a href="avoid.html" class="">Avoid</a>
 <a href="changelog.html" class="">Changelog</a>
 <a href="report.html" class="">Reports</a>
+<a href="compatibility.html" class="">Compatibility</a>
+<a href="glossary.html" class="">Glossary</a>
       </nav>
     </div>
   </header>
@@ -26,119 +28,188 @@
 
 <section class="hero">
   <h1>Setup</h1>
-  <p class="lead">Get the game, shared storage, TTW files, DML profile, plugin-file handoff, and INIs working before adding anything extra.</p>
+  <p class="lead">Build and test the TTW setup in small checkpoints so Android problems are easier to isolate.</p>
 </section>
-
+<section class="guide-switcher" aria-label="Guide picker">
+  <span class="guide-switcher-label">Guide picker</span>
+  <a class="guide-chip" href="/PocketMojave/">
+    <strong>Shonk's Pocket Mojave</strong>
+    <span>New Vegas on Android</span>
+  </a>
+  <a class="guide-chip current" href="/PocketWastelands/">
+    <strong>Shonk's Pocket Wastelands</strong>
+    <span>TTW on Android</span>
+  </a>
+</section>
+<h2>Before you start</h2>
+<div class="callout notice learning-card">
+  <h3>GameNative build note</h3>
+  <p>If custom games or the expected drive do not appear, re-check the GameNative build you installed before changing random settings. The home page explains the modern prerelease limitation.</p>
+</div>
+<div class="callout notice learning-card">
+  <h3>New to these terms?</h3>
+  <p>Use the <a href="glossary.html">Glossary</a> when a term is unclear. Do not guess at settings like DXVK, FEXCore, Turnip, present mode, shared storage, or plugin order.</p>
+</div>
+<h2>How to troubleshoot setup</h2>
+<ul class="troubleshooting-list">
+  <li>Change one thing at a time, then test again.</li>
+  <li>Write down exact version numbers before changing GameNative, Proton/Wine, FEXCore, DXVK, Turnip, DML, or driver settings.</li>
+  <li>Test vanilla before adding mods. A modded crash report is not useful if the unmodded game never launched.</li>
+  <li>Keep screenshots of GameNative settings, DML profile settings, deployment results, and plugin output.</li>
+  <li>Separate the problem into one layer: GameNative, the game install, DML, the mod list, the load order, or INI settings.</li>
+</ul>
 <h2>GameNative setup</h2>
 <p>Use a simple GameNative setup first. Do not change drivers, wrappers, resolution, and mods all at the same time.</p>
+
 <div class="card-grid">
-  <article class="card"><h3>Resolution</h3><p><code>1280x720</code> for the first pass.</p></article>
-  <article class="card"><h3>Executable</h3><p>Use <code>FalloutNV.exe</code> after the 4GB patcher is applied. Use <code>nvse_loader.exe</code> only if your patcher setup does not auto-load xNVSE.</p></article>
-  <article class="card"><h3>Wine / Proton</h3><p>Use Proton 10 ARM64EC as the normal target. Test newer builds only when you are comparing Proton versions.</p></article>
-  <article class="card"><h3>Renderer</h3><p>DXVK with a current stable Turnip driver for your device.</p></article>
+  <article class="card"><h3>GameNative build</h3><p>GameNative 1.0.0 latest release.</p></article>
+  <article class="card"><h3>Resolution</h3><p><code>1280x720</code></p></article>
+  <article class="card"><h3>Executable</h3><p><code>FalloutNV.exe</code> / xNVSE route after the TTW baseline is confirmed.</p></article>
+  <article class="card"><h3>Wine / Proton</h3><p>Proton 10 ARM64EC.</p></article>
+  <article class="card"><h3>Emulator</h3><p>FEXCore.</p></article>
+  <article class="card"><h3>Renderer</h3><p>DXVK.</p></article>
+  <article class="card"><h3>Driver</h3><p>Turnip driver matched to your device.</p></article>
   <article class="card"><h3>Present mode</h3><p>Mailbox.</p></article>
-  <article class="card"><h3>Frame target</h3><p>Start with 60 FPS. TTW may need lower settings on weaker devices.</p></article>
+  <article class="card"><h3>Frame target</h3><p>60 FPS.</p></article>
+  <article class="card"><h3>Storage</h3><p>Shared storage outside GameNative App Storage. Internal shared storage is preferred when possible.</p></article>
+</div>
+<div class="callout warning">
+  <h3>Proton 11 ARM64EC warning</h3>
+  <p>Use Proton 10 ARM64EC for the normal guide target. <a href="https://github.com/GameNative/proton-wine/releases">GameNative Proton Wine releases</a> currently mark Proton 11 ARM64EC builds as testing-only and warn about instability or crashes. Test Proton 11 only when you are deliberately comparing Proton versions.</p>
+</div>
+<h2>Device and version profile</h2>
+<p>Pick the device/profile closest to your setup. The values below are test notes for GameNative and the compatibility layers, not a guarantee that every matching device will work.</p>
+<section class="profile-selector" aria-label="Device and version profile selector">
+  <div class="profile-control">
+    <label for="device-profile-select">Select your device/profile:</label>
+    <select id="device-profile-select">
+      <option value="sd8g2">Snapdragon 8 Gen 2</option>
+      <option value="rp5">Retroid Pocket 5</option>
+      <option value="rp6">Retroid Pocket 6</option>
+      <option value="rpflip2">Retroid Pocket Flip 2</option>
+      <option value="other">Other Android ARM chip</option>
+    </select>
+  </div>
+  <article class="card profile-summary" id="profile-summary" aria-live="polite"></article>
+</section>
+<script>
+const pocketGuideProfiles = {"sd8g2": {"name": "Snapdragon 8 Gen 2", "status": "Verified working", "json": "assets/profiles/snapdragon-8-gen-2-pocket-wastelands.json", "fields": {"Guide target": "Pocket Wastelands / Tale of Two Wastelands", "GameNative build": "GameNative 1.0.0 latest release", "Container": "bionic", "Proton/Wine": "proton-10.0-arm64ec-2", "FEXCore": "2604", "DXVK": "2.6.1-gplasync", "Turnip/driver": "turnip26.0.0_R8", "Vulkan": "1.3", "Resolution": "1280x720", "Present mode": "Mailbox", "FPS target": "60 FPS", "Audio": "PulseAudio, latency around 144", "CPU list": "0,1,2,3,4,5,6", "WoW64 CPU list": "4,5,6,7", "Last tested": "2026-06-11"}, "environment": "WRAPPER_MAX_IMAGE_COUNT=0 ZINK_DESCRIPTORS=lazy ZINK_DEBUG=compact MESA_SHADER_CACHE_DISABLE=false MESA_SHADER_CACHE_MAX_SIZE=1024MB mesa_glthread=true WINEESYNC=1 MESA_VK_WSI_PRESENT_MODE=mailbox TU_DEBUG=noconform DXVK_FRAME_RATE=60 PULSE_LATENCY_MSEC=144 DXVK_HUD=fps,frametimes,drawcalls,compiler", "notes": "Verified working Snapdragon 8 Gen 2 profile for Pocket Wastelands. TTW is heavier than plain New Vegas, so do not treat this as proof for weaker devices or different GameNative builds."}, "rp5": {"name": "Retroid Pocket 5", "status": "Not verified yet", "json": "assets/profiles/retroid-pocket-5-wastelands.json", "fields": {"Guide target": "Pocket Wastelands / Tale of Two Wastelands", "Status": "Not verified yet"}, "environment": "Not verified yet", "notes": "Placeholder only. Do not list this device as working until a complete compatibility report is submitted."}, "rp6": {"name": "Retroid Pocket 6", "status": "Not verified yet", "json": "assets/profiles/retroid-pocket-6-wastelands.json", "fields": {"Guide target": "Pocket Wastelands / Tale of Two Wastelands", "Status": "Not verified yet"}, "environment": "Not verified yet", "notes": "Placeholder only. Do not list this device as working until a complete compatibility report is submitted."}, "rpflip2": {"name": "Retroid Pocket Flip 2", "status": "Not verified yet", "json": "assets/profiles/retroid-pocket-flip-2-wastelands.json", "fields": {"Guide target": "Pocket Wastelands / Tale of Two Wastelands", "Status": "Not verified yet"}, "environment": "Not verified yet", "notes": "Placeholder only. Do not list this device as working until a complete compatibility report is submitted."}, "other": {"name": "Other Android ARM chip", "status": "Not verified yet", "json": "assets/profiles/other-android-arm-chip-wastelands.json", "fields": {"Guide target": "Pocket Wastelands / Tale of Two Wastelands", "Status": "Not verified yet"}, "environment": "Not verified yet", "notes": "Placeholder only. Do not list this device as working until a complete compatibility report is submitted."}};
+function renderPocketGuideProfile() {
+  const select = document.getElementById('device-profile-select');
+  const panel = document.getElementById('profile-summary');
+  if (!select || !panel) return;
+  const profile = pocketGuideProfiles[select.value] || pocketGuideProfiles.sd8g2;
+  const fields = Object.entries(profile.fields).map(([key, value]) => `<div class="profile-field"><strong>${key}</strong><span>${value}</span></div>`).join('');
+  panel.innerHTML = `<div class="profile-title"><h3>${profile.name}</h3><span class="badge">${profile.status}</span></div>` +
+    `<p><a href="${profile.json}">View profile JSON</a></p>` +
+    `<div class="profile-fields">${fields}</div>` +
+    `<h3>Environment variables</h3><pre class="profile-env">${profile.environment}</pre>` +
+    `<div class="callout warning"><h3>Memory warning</h3><p>Use 2 GB memory and 2 GB video memory unless your Android device has 16 GB of RAM. If your device has 16 GB of RAM, you can leave the memory setting at 4 GB. Lower-memory devices may crash, stutter, or fail to launch if the profile reserves too much memory.</p><p>More memory is not automatically better on Android. The system, GameNative, Wine/Proton, the graphics driver, and the game all share limited RAM.</p></div>` +
+    `<p><strong>Notes:</strong> ${profile.notes}</p>`;
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('device-profile-select');
+  if (select) select.addEventListener('change', renderPocketGuideProfile);
+  renderPocketGuideProfile();
+});
+</script>
+<div class="callout notice learning-card">
+  <h3>GOG launcher notice inside GameNative</h3>
+  <p>If the Fallout: New Vegas launcher inside the GameNative Windows container has greyed-out options, hides the Play button, or says the game needs to be installed even though the files are already on the device, the container may be missing the Bethesda registry entry.</p>
+  <ol>
+    <li>Download <a href="https://support.gog.com/hc/en-us/articles/115003627285-Oblivion-Greyed-out-options-or-missing-Play-button-in-the-launcher?product=gog">GOG's beth_registry.zip fix</a>.</li>
+    <li>Extract <code>beth_registry.cmd</code>.</li>
+    <li>Place <code>beth_registry.cmd</code> in the game root inside the container, next to <code>FalloutNV.exe</code>.</li>
+    <li>Run it from that folder and allow it to update the registry.</li>
+    <li>Open the launcher again. If the options are still greyed out, report the GameNative build, game source, and exact folder path.</li>
+  </ol>
+  <p>This is not a normal PC setup step. Use it only when the game is already on the Android device and the launcher inside GameNative acts like the game is not installed.</p>
 </div>
 
+<div class="callout notice learning-card">
+  <h3>Checkpoint: GameNative works before DML</h3>
+  <ul class="checkpoint-list">
+    <li>Fallout: New Vegas launches in GameNative before the TTW archive is deployed.</li>
+    <li>You can reach the main menu.</li>
+    <li>You can start a new game and reach Doc Mitchell's house.</li>
+    <li>If this fails, stop here. Fix GameNative, the game install, or the profile before adding TTW.</li>
+  </ul>
+</div>
 <h2>Install Fallout: New Vegas in shared storage</h2>
 <div class="callout warning">
   <h3>This is required for the DML route</h3>
-  <p>Fallout: New Vegas should be somewhere Android file managers and DML can reach, such as:</p>
+  <p>Do not place the active New Vegas install only inside GameNative App Storage. DML needs practical access to the same folder it will deploy into.</p>
   <pre>/storage/emulated/0/PcGames/Fallout New Vegas/</pre>
-  <p>Set the DML deployment target to:</p>
-  <pre>/storage/emulated/0/PcGames/Fallout New Vegas/Data/</pre>
-  <p>Do not select the game root as the Data target. The Data target should contain <code>FalloutNV.esm</code>.</p>
 </div>
-
 <h2>Prepare Fallout 3 and Fallout: New Vegas on PC</h2>
 <ol>
-  <li>Install English Fallout 3 and Fallout: New Vegas with all DLC.</li>
-  <li>Install both games outside Windows-protected folders such as <code>Program Files</code>, the Desktop, or Documents.</li>
-  <li>Launch both games once on PC so their INIs are created.</li>
-  <li>Install current Visual C++ Redistributables on the PC. GameNative may also need them for tools and DLL mods.</li>
+  <li>Install clean English copies of Fallout 3 and Fallout: New Vegas with all DLC on a Windows PC.</li>
+  <li>Launch both games once on PC so they create their default settings and folders.</li>
+  <li>Do not use a previously broken or heavily modded install as the TTW source.</li>
 </ol>
-
 <h2>Generate Tale of Two Wastelands on PC</h2>
-<div class="callout notice">
+<div class="callout warning">
   <h3>Do not generate TTW on Android</h3>
-  <p>The TTW installer is a Windows-side job. The audio encoding step is CPU-heavy and can take a long time even on a normal desktop CPU.</p>
+  <p>Run the TTW installer on PC. Android/GameNative is the play target, not the place to build the TTW output.</p>
 </div>
 <ol>
-  <li>Download the <a href="https://mod.pub/ttw/133-tale-of-two-wastelands">Tale of Two Wastelands installer</a>.</li>
-  <li>Create a simple output folder, such as <code>Desktop/ttw</code>.</li>
-  <li>Run the TTW installer as administrator.</li>
-  <li>Point it at your Fallout 3 install, your Fallout: New Vegas install, and your chosen output folder.</li>
-  <li>Wait for the install to finish. The finished TTW folder should be large. Around 17 GB is the normal size target.</li>
-  <li>Download and install the current <a href="https://mod.pub/ttw/133/files">YUPTTW</a> update as a separate mod archive for DML.</li>
+  <li>Follow <a href="https://thebestoftimes.moddinglinked.com/intro.html">The Best of Times</a> for the PC-side TTW generation requirements.</li>
+  <li>Generate a clean TTW output folder.</li>
+  <li>Confirm the generated TTW setup launches on PC if possible.</li>
+  <li>Zip the finished TTW output folder for transfer to Android.</li>
 </ol>
-
 <h2>Zip and transfer TTW to Android</h2>
 <ol>
-  <li>Right-click the finished <code>ttw</code> folder.</li>
-  <li>Compress it into a normal zip archive.</li>
-  <li>Name it clearly, such as <code>TTW.zip</code>.</li>
-  <li>Copy <code>TTW.zip</code> to Android shared storage, such as <code>Downloads/</code>.</li>
+  <li>Move the finished TTW archive to Android shared storage.</li>
+  <li>Open <a href="https://github.com/CyberShonk/DroidModLoader">Droid Mod Loader</a>.</li>
+  <li>Create or select a <code>Pocket Wastelands</code> profile.</li>
+  <li>Import the TTW archive.</li>
+  <li>Deploy to the Fallout: New Vegas <code>Data</code> folder in shared storage.</li>
 </ol>
-
 <h2>Droid Mod Loader setup</h2>
+<div class="callout warning">
+  <h3>Plugin order and mod priority are not the same thing</h3>
+  <p>Plugin order controls ESM and ESP loading. Mod priority controls loose file conflicts. DML has to handle both, but they are different lists.</p>
+</div>
 <ol>
-  <li>Open Droid Mod Loader.</li>
-  <li>Create or select a Fallout: New Vegas profile.</li>
-  <li>Name it <code>Pocket Wastelands</code> or <code>TTW</code>.</li>
-  <li>Set the deployment target to the New Vegas <code>Data</code> folder in shared storage.</li>
-  <li>Import <code>TTW.zip</code>.</li>
-  <li>Import YUPTTW and the essential mods from the Mod List page.</li>
-  <li>Deploy mods.</li>
-  <li>Run plugin discovery.</li>
-  <li>Enable the TTW plugins and any guide plugins that have ESP or ESM files.</li>
-  <li>Write plugin files.</li>
+  <li>Open DML.</li>
+  <li>Select the Pocket Wastelands profile.</li>
+  <li>Confirm the deployment target is the New Vegas <code>Data</code> folder.</li>
+  <li>Deploy the current state.</li>
+  <li>Use DML's plugin list/load order view to confirm the enabled ESM and ESP files match the guide.</li>
+  <li>Write the plugin files again after changing order.</li>
 </ol>
-
+<div class="callout notice learning-card">
+  <h3>Checkpoint: TTW archive and DML deployment</h3>
+  <ul class="checkpoint-list">
+    <li>DML has a Pocket Wastelands profile.</li>
+    <li>The TTW archive imports without missing-file errors.</li>
+    <li>The deployment target is the New Vegas <code>Data</code> folder in shared storage.</li>
+    <li>If deployment fails, stop here and fix DML, storage, or the archive before launching GameNative.</li>
+  </ul>
+</div>
 <h2>Copy plugin files into GameNative</h2>
-<p>DML writes <code>plugins.txt</code> and <code>loadorder.txt</code> for the profile. New Vegas running in GameNative still needs those files inside the Wine/Proton user profile path.</p>
-<ol>
-  <li>Use an Android file manager and open DML's profile folder:</li>
-</ol>
-<pre>Android/data/com.shonkware.droidmodloader/files/state/profiles/</pre>
-<ol start="2">
-  <li>Open your Fallout: New Vegas or TTW profile folder.</li>
-  <li>Copy <code>plugins.txt</code> and <code>loadorder.txt</code>.</li>
-  <li>Create this folder in your New Vegas game folder:</li>
-</ol>
-<pre>DML_Output/</pre>
-<ol start="5">
-  <li>Paste the files into <code>DML_Output</code>.</li>
-  <li>Open GameNative and browse to the same New Vegas game folder.</li>
-  <li>Open <code>DML_Output</code>.</li>
-  <li>Copy <code>plugins.txt</code> and <code>loadorder.txt</code>.</li>
-  <li>Paste them into:</li>
-</ol>
-<pre>C:/users/xuser/AppData/Local/FalloutNV/</pre>
-<p>Overwrite existing files when needed.</p>
-
+<p>After DML writes plugin outputs, copy <code>plugins.txt</code> and <code>loadorder.txt</code> into the matching GameNative AppData path so the container uses the same plugin order.</p>
+<div class="callout notice learning-card">
+  <h3>Checkpoint: GameNative sees the plugin files</h3>
+  <ul class="checkpoint-list">
+    <li>The plugin files exist in the GameNative AppData path.</li>
+    <li>The enabled list contains <code>TaleOfTwoWastelands.esm</code> and <code>YUPTTW.esm</code>.</li>
+    <li>If the game starts as plain New Vegas, stop and check the plugin-file handoff.</li>
+  </ul>
+</div>
 <h2>BethINI Pie setup</h2>
-<ol>
-  <li>Download <a href="https://www.nexusmods.com/site/mods/631">BethINI Pie</a>.</li>
-  <li>Extract it somewhere the GameNative container can reach, such as Android Downloads.</li>
-  <li>Launch BethINI Pie inside GameNative.</li>
-  <li>Select Fallout: New Vegas.</li>
-  <li>Start with Medium on stronger handhelds or Low on weaker handhelds.</li>
-  <li>Enable audio multithreading.</li>
-  <li>Set the starting quest to <strong>Tale of Two Wastelands</strong>.</li>
-  <li>Save the INIs.</li>
-</ol>
+<p>Use <a href="https://www.nexusmods.com/site/mods/631">BethINI Pie</a> after the TTW files are in place. Keep settings conservative until the TTW start is proven.</p>
 <div class="callout notice">
   <h3>Manual TTW starting quest check</h3>
-  <p>If BethINI Pie does not set the TTW start correctly, check <code>FalloutCustom.ini</code> or your active New Vegas INI path for:</p>
-  <pre>SCharGenQuest=001FFFF8</pre>
+  <p>After the first launch, verify that the TTW start behaves correctly before adding more mods. TTW is heavier than plain New Vegas and problems compound quickly.</p>
 </div>
-
 <h2>Tracking performance</h2>
 <ol>
-  <li>Use the GameNative overlay first.</li>
-  <li>Record device, driver, Proton version, DXVK version, location, weather, time of day, FPS, stutter, and crash behavior.</li>
-  <li>Use the same short route for comparisons. Vault 101 exit, Megaton exterior, Goodsprings to the saloon, Freeside gate, and a short Strip walk are useful checks.</li>
-  <li>Use DXVK HUD only for test runs, then turn it off for normal play.</li>
+  <li>Use the GameNative overlay first for a quick FPS check.</li>
+  <li>Use the same route, weather, time of day, and save each time.</li>
+  <li>Only switch to DXVK HUD when you need frame time, draw call, pipeline, or memory details.</li>
+  <li>Turn the DXVK HUD off after the benchmark.</li>
 </ol>
 <pre>DXVK_HUD=fps,frametimes,drawcalls,pipelines,memory</pre>
 
@@ -146,7 +217,6 @@
   <a class="page-nav-link prev" href="index.html"><span>&larr; Previous</span><strong>Home</strong></a>
   <a class="page-nav-link next" href="mods.html"><span>Next &rarr;</span><strong>Mod List</strong></a>
 </nav>
-
   </main>
   <footer class="site-footer">
     <div class="container">
