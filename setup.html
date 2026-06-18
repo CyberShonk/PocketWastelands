@@ -50,13 +50,37 @@
   <h3>New to these terms?</h3>
   <p>Use the <a href="glossary.html">Glossary</a> when a term is unclear. Do not guess at settings like DXVK, FEXCore, Turnip, present mode, shared storage, or plugin order.</p>
 </div>
+<h2>Which PC versions should I use?</h2>
+<div class="callout notice learning-card">
+  <h3>GOG is recommended for the simplest Android handoff</h3>
+  <p>Generate TTW from clean, supported English copies of Fallout 3 and Fallout: New Vegas. For the New Vegas installation that will be copied to Android, the GOG release is usually the simplest choice because it is DRM-free.</p>
+  <p>Steam copies can also work. GameNative can recognize Steam ownership, but a New Vegas folder copied manually from a PC may not be detected immediately.</p>
+  <p>If GameNative does not recognize a copied Steam installation:</p>
+  <ol>
+    <li>Confirm that GameNative is signed into the Steam account that owns Fallout: New Vegas.</li>
+    <li>Rename the shared-storage game folder so it closely matches the name shown in the Steam client. <code>Fallout New Vegas</code> is a good example.</li>
+    <li>Close and reopen GameNative.</li>
+    <li>Refresh or recreate the game entry or container, then select <code>FalloutNV.exe</code> again.</li>
+  </ol>
+  <p>The folder rename and container refresh worked during my testing, but newer GameNative versions may not need it and the workaround is not guaranteed on every device.</p>
+  <p>The Epic Games Store versions should also work when the required TTW and Epic preparation steps are followed, but I have not personally tested this Android handoff. GOG remains the recommended first-time route.</p>
+</div>
+<div class="callout warning">
+  <h3>These DML instructions are for v0.6.0-beta</h3>
+  <p>DML v0.6.0-beta does not yet have a dedicated TTW game option. Use the Fallout: New Vegas game type with a clearly named Pocket Wastelands profile. This release uses separate manually selected targets for the <code>Data</code> folder and, when needed, the Game Root folder. It does not infer one from the other or validate the complete TTW installation. Plugin files still require a manual handoff to GameNative. This release does not create <code>DML_output</code>, apply INI presets, or manage archive invalidation.</p>
+</div>
 <h2>How to troubleshoot setup</h2>
 <ul class="troubleshooting-list">
   <li>Change one thing at a time, then test again.</li>
   <li>Write down exact version numbers before changing GameNative, Proton/Wine, FEXCore, DXVK, Turnip, DML, or driver settings.</li>
   <li>Test vanilla before adding mods. A modded crash report is not useful if the unmodded game never launched.</li>
-  <li>Keep screenshots of GameNative settings, DML profile settings, deployment results, and plugin output.</li>
-  <li>Separate the problem into one layer: GameNative, the game install, DML, the mod list, the load order, or INI settings.</li>
+  <li>When DML asks for the <strong>Data Folder</strong>, select <code>&lt;Game Folder&gt;/Data</code>. After TTW is deployed, confirm it contains <code>FalloutNV.esm</code>, <code>Fallout3.esm</code>, and <code>TaleOfTwoWastelands.esm</code>.</li>
+  <li>When DML separately asks for the <strong>Game Root Folder</strong>, select the parent folder containing <code>FalloutNV.exe</code> and <code>Data</code>. Do not swap the two targets.</li>
+  <li>If DML rejects a folder or deploys to the wrong place, reselect the correct target and manually check its contents. v0.6.0-beta does not validate the complete TTW installation for you.</li>
+  <li>If deployment worked before but now fails, Android may have removed DML's folder permission. Select the affected folder again and approve the system access prompt.</li>
+  <li>A missing <code>DML_output</code> folder is normal in v0.6.0-beta. That automatic export folder is planned for a later release.</li>
+  <li>Keep screenshots of GameNative settings, DML profile settings, deployment results, the plugin list, and DML's operation log.</li>
+  <li>Separate the problem into one layer: GameNative, the game install, DML, the mod list, plugin activation, timestamp order, or INI settings.</li>
 </ul>
 <h2>GameNative setup</h2>
 <p>Use a simple GameNative setup first. Do not change drivers, wrappers, resolution, and mods all at the same time.</p>
@@ -166,36 +190,54 @@ document.addEventListener('DOMContentLoaded', () => {
   <li>Import the TTW archive.</li>
   <li>Deploy to the Fallout: New Vegas <code>Data</code> folder in shared storage.</li>
 </ol>
-<h2>Droid Mod Loader setup</h2>
+<h2>Droid Mod Loader v0.6.0-beta setup</h2>
 <div class="callout warning">
-  <h3>Plugin order and mod priority are not the same thing</h3>
-  <p>Plugin order controls ESM and ESP loading. Mod priority controls loose file conflicts. DML has to handle both, but they are different lists.</p>
+  <h3>Use a New Vegas game type and a separate TTW profile</h3>
+  <p>v0.6.0-beta does not yet include a dedicated Tale of Two Wastelands game option. Select Fallout: New Vegas and use a clearly named <code>Pocket Wastelands</code> profile so it is not confused with a normal New Vegas setup.</p>
 </div>
 <ol>
   <li>Open DML.</li>
-  <li>Select the Pocket Wastelands profile.</li>
-  <li>Confirm the deployment target is the New Vegas <code>Data</code> folder.</li>
+  <li>Select the Fallout: New Vegas game type and the Pocket Wastelands profile.</li>
+  <li>When DML asks for the <strong>Data Folder</strong>, select the TTW/New Vegas <code>&lt;Game Folder&gt;/Data</code> folder.</li>
+  <li>After TTW is deployed, confirm that it contains <code>FalloutNV.esm</code>, <code>Fallout3.esm</code>, and <code>TaleOfTwoWastelands.esm</code>.</li>
+  <li>If DML separately asks for the <strong>Game Root Folder</strong>, select the parent folder containing <code>FalloutNV.exe</code> and <code>Data</code>.</li>
+  <li>Do not swap those two targets. v0.6.0-beta does not automatically detect <code>Data</code> from the Game Root or validate the complete TTW installation.</li>
   <li>Deploy the current state.</li>
-  <li>Use DML's plugin list/load order view to confirm the enabled ESM and ESP files match the guide.</li>
-  <li>Write the plugin files again after changing order.</li>
+  <li>Open DML's plugin list, enable only the plugins you installed, arrange the list to match the guide, and tap <strong>Write Plugin Files</strong>.</li>
 </ol>
+<div class="callout warning">
+  <h3>Activation, plugin order, and mod priority are different</h3>
+  <p><code>plugins.txt</code> lists enabled plugins. For TTW/New Vegas, each enabled filename is written on its own line without a <code>*</code> prefix. <code>loadorder.txt</code> records DML's full plugin list in the order shown by the app, including disabled entries.</p>
+  <p>TTW uses New Vegas's timestamp-based plugin ordering. DML v0.6.0-beta does not change ESM or ESP modification timestamps, so writing or copying <code>loadorder.txt</code> alone does not enforce the real in-game order. Mod priority is a separate list that controls loose-file conflicts.</p>
+</div>
 <div class="callout notice learning-card">
   <h3>Checkpoint: TTW archive and DML deployment</h3>
   <ul class="checkpoint-list">
-    <li>DML has a Pocket Wastelands profile.</li>
+    <li>DML has a Pocket Wastelands profile using the Fallout: New Vegas game type.</li>
     <li>The TTW archive imports without missing-file errors.</li>
-    <li>The deployment target is the New Vegas <code>Data</code> folder in shared storage.</li>
+    <li>The Data Folder target is the TTW/New Vegas <code>&lt;Game Folder&gt;/Data</code> folder in shared storage.</li>
+    <li>If a Game Root target is configured, it is the parent folder containing <code>FalloutNV.exe</code> and <code>Data</code>.</li>
+    <li>DML reports that <code>plugins.txt</code> and <code>loadorder.txt</code> were written successfully.</li>
     <li>If deployment fails, stop here and fix DML, storage, or the archive before launching GameNative.</li>
   </ul>
 </div>
-<h2>Copy plugin files into GameNative</h2>
-<p>After DML writes plugin outputs, copy <code>plugins.txt</code> and <code>loadorder.txt</code> into the matching GameNative AppData path so the container uses the same plugin order.</p>
+<h2>Copy DML's plugin files into GameNative</h2>
+<p>DML v0.6.0-beta does not copy these files into GameNative automatically.</p>
+<ol>
+  <li>After tapping <strong>Write Plugin Files</strong>, open DML's operation log. It prints the exact source path for <code>plugins.txt</code> and <code>loadorder.txt</code>.</li>
+  <li>On most current installations, the files are under DML's profile storage in <code>Android/data/com.shonkware.droidmodloader/files/state/profiles/</code>. Open the folder for the active Pocket Wastelands profile. If DML's log shows a different path, use the logged path.</li>
+  <li>Use ZArchiver or another file manager that can request access to <code>Android/data</code> through Android's system folder picker. Root access is not normally required for this external app-storage path.</li>
+  <li>Copy both files into a temporary shared folder that GameNative can see, such as <code>Download/DML Plugin Transfer/</code>. This folder is user-created; it is not the unreleased automatic <code>DML_output</code> feature.</li>
+  <li>Open GameNative's file manager and copy both files into <code>C:/users/xuser/AppData/Local/FalloutNV/</code>. If your container uses another username, use that user's <code>AppData/Local/FalloutNV</code> folder.</li>
+  <li>Replace the existing files when prompted. <code>plugins.txt</code> controls activation; <code>loadorder.txt</code> is a readable reference for DML's saved list. Repeat this handoff whenever plugin activation or the DML list changes.</li>
+</ol>
 <div class="callout notice learning-card">
   <h3>Checkpoint: GameNative sees the plugin files</h3>
   <ul class="checkpoint-list">
-    <li>The plugin files exist in the GameNative AppData path.</li>
-    <li>The enabled list contains <code>TaleOfTwoWastelands.esm</code> and <code>YUPTTW.esm</code>.</li>
-    <li>If the game starts as plain New Vegas, stop and check the plugin-file handoff.</li>
+    <li>The plugin files exist in GameNative's <code>AppData/Local/FalloutNV</code> folder.</li>
+    <li><code>plugins.txt</code> contains <code>TaleOfTwoWastelands.esm</code> and <code>YUPTTW.esm</code> with no <code>*</code> prefixes.</li>
+    <li>The ESM and ESP timestamps in the actual shared-storage <code>Data</code> folder used by GameNative match the intended TTW order.</li>
+    <li>If the game starts as plain New Vegas, stop and check the active profile, plugin-file handoff, and plugin timestamps.</li>
   </ul>
 </div>
 <h2>BethINI Pie setup</h2>
